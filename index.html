@@ -1,35 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Happy New Year Aradhya 🎉</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body{
-      margin:0;
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      background:linear-gradient(120deg,#000428,#004e92);
-      color:white;
-      font-family:Arial,Helvetica,sans-serif;
-      text-align:center;
-    }
-    h1{
-      font-size:3rem;
-      animation: glow 2s infinite alternate;
-    }
-    @keyframes glow{
-      from{ text-shadow:0 0 10px #fff;}
-      to{ text-shadow:0 0 30px gold;}
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Happy New Year Aradhya 🎆</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+body{
+  height:100vh;
+  background:linear-gradient(270deg,#020024,#090979,#00d4ff);
+  background-size:600% 600%;
+  animation:bgMove 10s ease infinite;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  color:white;
+}
+
+@keyframes bgMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+.container{
+  text-align:center;
+  animation: fadeZoom 2s ease forwards;
+}
+
+@keyframes fadeZoom{
+  from{opacity:0; transform:scale(0.8)}
+  to{opacity:1; transform:scale(1)}
+}
+
+h1{
+  font-size:3.5rem;
+  margin-bottom:10px;
+  text-shadow:0 0 20px gold;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+  from{text-shadow:0 0 10px gold;}
+  to{text-shadow:0 0 30px orange;}
+}
+
+p{
+  font-size:1.2rem;
+  opacity:0;
+  animation: fadeIn 2s ease forwards;
+  animation-delay:1.5s;
+}
+
+@keyframes fadeIn{
+  to{opacity:1}
+}
+
+/* Fireworks */
+.firework{
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:white;
+  border-radius:50%;
+  animation: explode 1.5s linear infinite;
+}
+
+@keyframes explode{
+  from{transform:scale(1); opacity:1}
+  to{transform:scale(25); opacity:0}
+}
+</style>
 </head>
+
 <body>
-  <div>
-    <h1>🎆 Happy New Year Aradhya 🎆</h1>
-    <p>May your year be full of happiness & success ✨</p>
-  </div>
+
+<div class="container">
+  <h1>🎆 Happy New Year Aradhya 🎆</h1>
+  <p>May your year be full of love, happiness & success ✨</p>
+</div>
+
+<script>
+function firework(){
+  const fw=document.createElement("div");
+  fw.className="firework";
+  fw.style.left=Math.random()*100+"vw";
+  fw.style.top=Math.random()*100+"vh";
+  fw.style.background=`hsl(${Math.random()*360},100%,50%)`;
+  document.body.appendChild(fw);
+  setTimeout(()=>fw.remove(),1500);
+}
+setInterval(firework,300);
+</script>
+
 </body>
 </html>
